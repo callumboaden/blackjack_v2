@@ -139,26 +139,46 @@ button {
          Layout
 ---------------------------------------------------------------- */
 
-.container {
-  display: flex;
-  flex-direction: column;
-  padding-left: 15px;
-  padding-right: 15px;
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(50% 50% at 50% 50%, #16a40a 0%, #0a6802 100%);
-}
+/* Header */
 
 .header {
+  width: 100%;
   position: absolute;
   display: flex;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  justify-content:space-between;
+  padding: 15px;
 
   h1 {
     color: $white;
     font-size: 1.5em;
   }
+
+  div {
+    display: flex;
+
+    &:first-child {
+      margin-right: 1em;
+    }
+  }
+}
+
+.player__bet__display__label,
+.player__bank__display__label {
+  color: $white;
+
+  span {
+    margin-left: .25em;
+  }
+}
+
+/* Main */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(50% 50% at 50% 50%, #16a40a 0%, #0a6802 100%);
 }
 
 .game {

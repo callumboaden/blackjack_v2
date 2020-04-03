@@ -147,6 +147,45 @@ button {
 /* ----------------------------------------------------------------
          Layout
 ---------------------------------------------------------------- */
+/* Header */
+.header {
+  width: 100%;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 15px;
+}
+
+.header h1 {
+  color: #fff;
+  font-size: 1.5em;
+}
+
+.header div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header div:first-child {
+  margin-right: 1em;
+}
+
+.player__bet__display__label,
+.player__bank__display__label {
+  color: #fff;
+}
+
+.player__bet__display__label span,
+.player__bank__display__label span {
+  margin-left: .25em;
+}
+
+/* Main */
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -155,25 +194,9 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding-left: 15px;
-  padding-right: 15px;
   width: 100vw;
   height: 100vh;
   background: radial-gradient(50% 50% at 50% 50%, #16a40a 0%, #0a6802 100%);
-}
-
-.header {
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.header h1 {
-  color: #fff;
-  font-size: 1.5em;
 }
 
 .game {
