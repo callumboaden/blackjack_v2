@@ -1,4 +1,5 @@
 const elements = {
+    clearBetButton: document.querySelector('.clear-bet'),
     playerBankDisplay: document.querySelector('.player__bank__display__amount'),
     playerBetDisplay: document.querySelector('.player__bet__display__amount'),
     betButtons: document.querySelector('.buttons__bet'),
@@ -19,6 +20,10 @@ elements.betButtons.addEventListener('click', e => {
     // get player bet from UI
     betAmount = parseInt(e.target.dataset.bet);
 
+    if (state.player.bank) {
+        elements.clearBetButton.classList.remove('hide');
+    }
+
     if (state.player.bank >= betAmount) {
         // update state
         state.player.bet += betAmount;
@@ -33,4 +38,26 @@ elements.betButtons.addEventListener('click', e => {
         elements.playerBankDisplay.textContent = state.player.bank;
     }
 
+});
+
+// Event listener for clear bet button 
+elements.clearBetButton.addEventListener('click', () => {
+    console.log('clear bet');
+
+    // add bet to bank total
+    state.player.bank += state.player.bet;
+
+    // reset bet
+    state.player.bet = 0;
+
+    // prepare UI for changes
+    elements.playerBetDisplay.innerHTML = '';
+    elements.playerBankDisplay.innerHTML = '';
+
+    // update UI
+    elements.playerBetDisplay.textContent = state.player.bet;
+    elements.playerBankDisplay.textContent = state.player.bank;
+
+    // hide clear button 
+    elements.clearBetButton.classList.add('hide');
 });
