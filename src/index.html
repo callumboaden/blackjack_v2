@@ -1,14 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Blackjack</title>
-</head>
-<body>
-    
+  </head>
+  <body>
+    <!-- begin : container -->
+    <div class="container">
+      <!-- begin : header -->
+      <div class="header">
+        <h1>Blackjack</h1>
+      </div>
+      <!-- end : header -->
+
+      <!-- begin : game -->
+      <div class="game">
+        <!-- begin : dealer -->
+        <div class="dealer">
+          <h2>Dealer</h2>
+
+          <div class="dealer__hand">
+            <div class="dealer__hand__cards">
+
+              <!-- 
+              <img src="./assets/images/cards/10C.svg" alt="Card" />
+              <img src="./assets/images/cards/AH.svg" alt="Card" />
+              -->
+
+            </div>
+            <div class="dealer__hand__score"></div>
+          </div>
+        </div>
+        <!-- end : dealer -->
+
+        <!-- begin : player -->
+        <div class="player">
+          <h2>Player</h2>
+
+          <div class="player__hand__list">
+            <div class="player__hand">
+              <div class="player__hand__cards">
+
+                <!-- 
+                <img src="./assets/images/cards/10C.svg" alt="Card" />
+                <img src="./assets/images/cards/AH.svg" alt="Card" />
+                -->
+
+              </div>
+              <div class="player__hand__score"></div>
+            </div>
+          </div>
+        </div>
+        <!-- end : player -->
+      </div>
+      <!-- end : game -->
+
+      <!-- begin : gameplay buttons -->
+      <div class="buttons__play">
+        <button class="button__hit">Hit</button>
+        <button class="button__stand">Stand</button>
+        <button class="button__split">Split</button>
+        <button class="button__double">Double</button>
+        <button class="button__surrender disabled">Surrender</button>
+        <button class="button__surrender disabled">Insurance</button>
+      </div>
+      <!-- end : gameplay buttons -->
+
+      <!-- begin : bet buttons -->
+      <div class="buttons__bet">
+        <button data-bet="50">50</button>
+        <button data-bet="100">100</button>
+        <button data-bet="100">200</button>
+        <button data-bet="100">500</button>
+      </div>
+      <!-- end : bet buttons -->
+
+
+    </div>
+    <!-- end : container -->
 
     <script src="./js/index.js"></script>
-</body>
+  </body>
 </html>
