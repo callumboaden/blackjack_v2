@@ -40,27 +40,29 @@ class Deck {
 
         // Set Image URL
         card.imgURL = `${card.value}${card.suit
-          .split('')
+          .split("")
           .splice(0, 1)
-          .join('')
+          .join("")
           .toUpperCase()}.svg`;
 
         deck.push(card);
       }
     }
 
-    this.deck = this.shuffleDeck(deck);
+    this.deck = deck;
     return this.deck;
   }
 
-  shuffleDeck(deck) {
-    deck.forEach((card, i) => {
-      let swapIndex = Math.floor(Math.random() * deck.length);
-      let randomCard = deck[swapIndex];
-      deck[i] = randomCard;
-      deck[swapIndex] = card;
+  shuffleDeck() {
+    this.deck.forEach((card, i) => {
+      let swapIndex = Math.floor(Math.random() * this.deck.length);
+      let randomCard = this.deck[swapIndex];
+      this.deck[i] = randomCard;
+      this.deck[swapIndex] = card;
     });
-    
-    return deck;
+  }
+
+  getNextCard() {
+    return this.deck.shift();
   }
 }

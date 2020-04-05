@@ -34,7 +34,6 @@ elements.betButtons.addEventListener('click', e => {
         elements.playerBankDisplay.textContent = state.player.bank;
     }
 
-    console.log(state);
 });
 
 // Event listener for clear bet button 
@@ -55,14 +54,8 @@ elements.clearBetButton.addEventListener('click', () => {
     elements.playerBankDisplay.textContent = state.player.bank;
 });
 
+
 function init() {
 
-    // Create new deck
-    state.deck = new Deck().createDeck();
-
-    // Create new Player 
-    state.player = new Player();
-
-    console.log(state);
 }
 
