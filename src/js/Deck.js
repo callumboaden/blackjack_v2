@@ -49,16 +49,18 @@ class Deck {
       }
     }
 
-    this.deck = deck;
+    this.deck = this.shuffleDeck(deck);
     return this.deck;
   }
 
-  shuffleDeck() {
-    this.deck.forEach((card, i) => {
-      let swapIndex = Math.floor(Math.random() * this.deck.length);
-      let randomCard = this.deck[swapIndex];
-      this.deck[i] = randomCard;
-      this.deck[swapIndex] = card;
+  shuffleDeck(deck) {
+    deck.forEach((card, i) => {
+      let swapIndex = Math.floor(Math.random() * deck.length);
+      let randomCard = deck[swapIndex];
+      deck[i] = randomCard;
+      deck[swapIndex] = card;
     });
+    
+    return deck;
   }
 }

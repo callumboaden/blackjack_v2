@@ -8,12 +8,7 @@ const elements = {
 }
 
 // Global game state 
-const state = {
-    player: {
-        bet: 0,
-        bank: 1000,
-    }
-};
+const state = {};
 
 init();
 
@@ -39,6 +34,7 @@ elements.betButtons.addEventListener('click', e => {
         elements.playerBankDisplay.textContent = state.player.bank;
     }
 
+    console.log(state);
 });
 
 // Event listener for clear bet button 
@@ -59,20 +55,14 @@ elements.clearBetButton.addEventListener('click', () => {
     elements.playerBankDisplay.textContent = state.player.bank;
 });
 
-// Event listener for Deal Button  
-elements.dealButton.addEventListener('click', () => {
-
-});
-
-
-
 function init() {
 
     // Create new deck
-    const deck = new Deck();
-    deck.createDeck();
-    deck.shuffleDeck();
+    state.deck = new Deck().createDeck();
 
-    console.log(deck);
+    // Create new Player 
+    state.player = new Player();
+
+    console.log(state);
 }
 
