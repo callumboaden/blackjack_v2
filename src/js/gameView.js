@@ -1,4 +1,5 @@
 const gameView = {
+  clearPlayerHandDisplay: () => (elements.playerHandListDisplay.innerHTML = ""),
   getBetAmount: (evt) => {
     return evt.target.dataset.bet;
   },
@@ -20,11 +21,16 @@ const gameView = {
         <div class="dealer__hand__cards">
             ${renderDealerCards(dealer.cards, isPlaying)}
         </div>
-        ${ !isPlaying ? `<div class="dealer__hand__score">${dealer.score}</div>` : ''}
+        ${
+          !isPlaying
+            ? `<div class="dealer__hand__score">${dealer.score}</div>`
+            : ""
+        }
         
       `;
     elements.dealerHandDisplay.insertAdjacentHTML("beforeend", markup);
   },
+  hideBetButtons: () => elements.betButtons.classList.add("hide"),
 };
 
 function renderPlayerHand(hand, index) {
@@ -51,17 +57,14 @@ function renderDealerCards(cards, isPlaying) {
     markup = cards
       .map((card, i) => {
         // hide second card, show back of card
-        console.log(i)
+        console.log(i);
         if (i === 1) {
-            
           return `<img src="./assets/images/cards/BC.svg" />`;
         } else {
-            return `
+          return `
                 <img src="./assets/images/cards/${card.imgURL}" />
             `;
         }
-
-
       })
       .join("");
   } else {

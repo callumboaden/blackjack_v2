@@ -1,7 +1,9 @@
 class Player {
   constructor() {
     this.bet = 0;
-    (this.bank = 1000), (this.handList = []);
+    this.bank = 1000;
+    this.handList = [];
+    this.activeHand = 0;
   }
   addHand(hand) {
     hand.calculateScore();
@@ -17,5 +19,8 @@ class Player {
   }
   getBetAmount() {
     return this.bet;
+  }
+  getActiveHand() {
+    return this.handList[this.activeHand];
   }
 }

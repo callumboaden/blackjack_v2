@@ -11,7 +11,7 @@ class Game {
   }
   deal() {
     this.isPlaying = true;
-    
+
     this.player.addHand(new Hand(
       this.deck.createHand(),
       this.player.getBetAmount()
@@ -24,5 +24,22 @@ class Game {
 
     this.dealer.calculateScore();
 
+  }
+  hitPlayer() {
+    // Player can hit if playing 
+    if (this.isPlaying) {
+      // get active hand
+      const activeHand = this.player.getActiveHand();
+      // get new card 
+      const newCard = this.deck.getNextCard();
+      // push new card into hand
+      activeHand.cards.push(newCard);
+      // update score
+      activeHand.calculateScore();
+      
+      return activeHand;
+    }
+
+    return;
   }
 }

@@ -108,6 +108,10 @@ button {
   display: flex;
   flex-direction: column;
   transform: translateY(-50%);
+
+  &.hide {
+    display: none;
+  }
 }
 
 .buttons__bet > button {

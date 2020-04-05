@@ -33,6 +33,15 @@ function controlPlay(evt) {
     console.log(action);
 }
 
+function controlHit() {
+  // Add new card to Player hand
+  state.game.hitPlayer();
+  // Prepare UI for changes
+  gameView.clearPlayerHandDisplay();
+  // Render changes on UI
+  gameView.renderPlayerHandList(state.game.player);
+}
+
 function controlDeal() {
     const playerBet = state.game.player.getBetAmount();
 
@@ -43,6 +52,7 @@ function controlDeal() {
         // Update UI
         gameView.renderDealer(state.game)
         gameView.renderPlayerHandList(state.game.player);
+        gameView.hideBetButtons();
         
     }
 
