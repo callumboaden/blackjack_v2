@@ -62,6 +62,10 @@ class Deck {
     });
   }
 
+  createHand() {
+    return [ this.getNextCard(), this.getNextCard() ];
+  }
+
   getNextCard() {
     return this.deck.shift();
   }
