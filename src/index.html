@@ -71,13 +71,13 @@
 
       <!-- begin : gameplay buttons -->
       <div class="buttons__play">
-        <button class="button__deal">Deal</button>
-        <button class="button__hit">Hit</button>
-        <button class="button__stand">Stand</button>
-        <button class="button__split">Split</button>
-        <button class="button__double">Double</button>
-        <button class="button__surrender disabled">Surrender</button>
-        <button class="button__surrender disabled">Insurance</button>
+        <button class="button__deal" data-action="deal">Deal</button>
+        <button class="button__hit" data-action="hit">Hit</button>
+        <button class="button__stand" data-action="stand">Stand</button>
+        <button class="button__split" data-action="split">Split</button>
+        <button class="button__double" data-action="double">Double</button>
+        <button class="button__surrender disabled" data-action="surrender">Surrender</button>
+        <button class="button__surrender disabled" data-action="insurance">Insurance</button>
       </div>
       <!-- end : gameplay buttons -->
 
@@ -97,11 +97,15 @@
 
 
     <!-- scripts -->
+    <script src="./js/base.js"></script>
     <script src="./js/Hand.js"></script>
     <script src="./js/Deck.js"></script>
     <script src="./js/Player.js"></script>
     <script src="./js/Dealer.js"></script>
     <script src="./js/Game.js"></script>
+
+    
+    <script src="./js/gameView.js"></script>
     <script src="./js/index.js"></script>
   </body>
 </html>
