@@ -56,6 +56,6 @@ elements.clearBetButton.addEventListener('click', () => {
 
 
 function init() {
-
+    state.game = new Game();
 }
 
