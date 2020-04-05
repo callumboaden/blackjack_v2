@@ -26,18 +26,24 @@ class Deck {
       for (let j = 0; j < values.length; j++) {
         let card = {
           suit: suits[i],
-          value: values[j]
+          value: values[j],
         };
 
         // Set card weight
-        // Default for Ace is 11
-        if (card.value === 'J' || card.value === 'Q' || card.value === 'K') {
+        if (card.value === "J" || card.value === "Q" || card.value === "K") {
           card.weight = 10;
-        } else if (card.value === 'A') {
+        } else if (card.value === "A") {
           card.weight = 11;
         } else {
           card.weight = parseInt(card.value);
         }
+
+        // Set Image URL
+        card.imgURL = `${card.value}${card.suit
+          .split('')
+          .splice(0, 1)
+          .join('')
+          .toUpperCase()}.svg`;
 
         deck.push(card);
       }

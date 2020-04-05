@@ -1,13 +1,19 @@
 
 const elements = {
-    clearBetButton: document.querySelector('.clear-bet'),
+    dealButton: document.querySelector('.button__deal'),
+    clearBetButton: document.querySelector('.button__clear-bet'),
     playerBankDisplay: document.querySelector('.player__bank__display__amount'),
     playerBetDisplay: document.querySelector('.player__bet__display__amount'),
     betButtons: document.querySelector('.buttons__bet'),
 }
 
 // Global game state 
-const state = {};
+const state = {
+    player: {
+        bet: 0,
+        bank: 1000,
+    }
+};
 
 init();
 
@@ -53,8 +59,16 @@ elements.clearBetButton.addEventListener('click', () => {
     elements.playerBankDisplay.textContent = state.player.bank;
 });
 
+// Event listener for Deal Button  
+elements.dealButton.addEventListener('click', () => {
+
+});
+
+
+
 function init() {
 
+    // Create new deck
     const deck = new Deck();
     deck.createDeck();
     deck.shuffleDeck();
