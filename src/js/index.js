@@ -41,7 +41,8 @@ function controlDeal() {
         state.game.deal();
 
         // Update UI
-        gameView.renderPlayerHands(state.game.player);
+        gameView.renderDealer(state.game)
+        gameView.renderPlayerHandList(state.game.player);
         
     }
 

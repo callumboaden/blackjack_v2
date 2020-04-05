@@ -3,24 +3,26 @@ class Game {
     this.deck = new Deck();
     this.player = new Player();
     this.dealer = new Dealer();
+    this.isPlaying = false;
   }
   startGame() {
     this.deck.createDeck();
     this.deck.shuffleDeck();
   }
   deal() {
-    const playerHand = new Hand(
+    this.isPlaying = true;
+    
+    this.player.addHand(new Hand(
       this.deck.createHand(),
       this.player.getBetAmount()
-    );
+    ));
 
-    
-
-    this.player.addHand(playerHand);
     this.dealer.cards.push(
         this.deck.getNextCard(),
         this.deck.getNextCard()
     );
+
+    this.dealer.calculateScore();
 
   }
 }
