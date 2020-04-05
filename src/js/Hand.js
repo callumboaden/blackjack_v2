@@ -4,6 +4,7 @@ class Hand {
         this.score = 0;
         this.bet = bet;
         this.status = '';
+        this.win = '';
     }
     calculateScore() {
         let score = 0;
@@ -17,11 +18,6 @@ class Hand {
     getScore() {
         return this.score;
     }
-    updateHandStatus() {
-        if (this.score > 21) {
-            this.status = 'bust';
-        }
-
-        return;
-    }
+    isTooMany() {
+        return this.score > 21;    }
 }

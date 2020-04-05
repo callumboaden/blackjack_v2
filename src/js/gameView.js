@@ -32,6 +32,7 @@ const gameView = {
     elements.dealerHandDisplay.insertAdjacentHTML("beforeend", markup);
   },
   hideBetButtons: () => elements.betButtons.classList.add("hide"),
+  showBetButtons: () => elements.betButtons.classList.remove("hide")
 };
 
 function renderPlayerHand(hand, index) {
@@ -48,6 +49,7 @@ function renderPlayerHand(hand, index) {
         </div>
         <div class="player__hand__score">${hand.score}</div>
         <div class="player__hand__status">${hand.status}</div>
+        <div class="player__hand__status">${hand.win}</div>
     </div>
     `;
 }
@@ -59,7 +61,6 @@ function renderDealerCards(cards, isPlaying) {
     markup = cards
       .map((card, i) => {
         // hide second card, show back of card
-        console.log(i);
         if (i === 1) {
           return `<img src="./assets/images/cards/BC.svg" />`;
         } else {

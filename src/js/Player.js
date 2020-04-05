@@ -5,6 +5,11 @@ class Player {
     this.handList = [];
     this.activeHand = 0;
   }
+  reset() {
+    this.bet = 0;
+    this.handList = [];
+    this.activeHand = 0;
+  }
   addHand(hand) {
     hand.calculateScore();
     this.handList.push(hand);
@@ -27,6 +32,6 @@ class Player {
     this.activeHand++;
   }
   isPlayerTurnOver() {
-    return this.activeHand > this.handList.length;
-  }
+    return this.activeHand === this.handList.length;
+  } 
 }

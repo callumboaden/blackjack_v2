@@ -3,6 +3,10 @@ class Dealer {
         this.cards = [];
         this.score = 0;
     }
+    reset() {
+        this.cards = [];
+        this.score = 0;
+    }
     calculateScore() {
         let score = 0;
 
