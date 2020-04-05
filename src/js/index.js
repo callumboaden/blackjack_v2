@@ -1,3 +1,4 @@
+
 const elements = {
     clearBetButton: document.querySelector('.clear-bet'),
     playerBankDisplay: document.querySelector('.player__bank__display__amount'),
@@ -5,13 +6,10 @@ const elements = {
     betButtons: document.querySelector('.buttons__bet'),
 }
 
-// Global game state object 
-const state = {
-    player: {
-        bet: 0,
-        bank: 1000
-    }
-};
+// Global game state 
+const state = {};
+
+init();
 
 // Event listener for bet buttons 
 elements.betButtons.addEventListener('click', e => {
@@ -20,11 +18,8 @@ elements.betButtons.addEventListener('click', e => {
     // get player bet from UI
     betAmount = parseInt(e.target.dataset.bet);
 
-    if (state.player.bank) {
-        elements.clearBetButton.classList.remove('hide');
-    }
-
     if (state.player.bank >= betAmount) {
+        
         // update state
         state.player.bet += betAmount;
         state.player.bank -= betAmount;
@@ -42,7 +37,6 @@ elements.betButtons.addEventListener('click', e => {
 
 // Event listener for clear bet button 
 elements.clearBetButton.addEventListener('click', () => {
-    console.log('clear bet');
 
     // add bet to bank total
     state.player.bank += state.player.bet;
@@ -57,7 +51,14 @@ elements.clearBetButton.addEventListener('click', () => {
     // update UI
     elements.playerBetDisplay.textContent = state.player.bet;
     elements.playerBankDisplay.textContent = state.player.bank;
-
-    // hide clear button 
-    elements.clearBetButton.classList.add('hide');
 });
+
+function init() {
+
+    const deck = new Deck();
+    deck.createDeck();
+    deck.shuffleDeck();
+
+    console.log(deck);
+}
+
