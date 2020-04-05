@@ -1,5 +1,6 @@
 const gameView = {
   clearPlayerHandDisplay: () => (elements.playerHandListDisplay.innerHTML = ""),
+  clearDealerHandDisplay: () => (elements.dealerHandDisplay.innerHTML = ""),
   getBetAmount: (evt) => {
     return evt.target.dataset.bet;
   },
@@ -46,6 +47,7 @@ function renderPlayerHand(hand, index) {
               .join("")}
         </div>
         <div class="player__hand__score">${hand.score}</div>
+        <div class="player__hand__status">${hand.status}</div>
     </div>
     `;
 }

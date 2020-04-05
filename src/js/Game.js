@@ -36,10 +36,24 @@ class Game {
       activeHand.cards.push(newCard);
       // update score
       activeHand.calculateScore();
-      
+      // update status
+      activeHand.updateHandStatus();
       return activeHand;
     }
 
     return;
+  }
+  standHand() {
+    if (this.isPlaying) {
+      this.player.nextHand();
+    }
+  }
+  dealerTurn() {
+    while (this.dealer.score < 16) {
+      this.dealer.cards.push(this.deck.getNextCard());
+      this.dealer.calculateScore();
+    }
+
+    this.isPlaying = false;
   }
 }

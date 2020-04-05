@@ -23,4 +23,10 @@ class Player {
   getActiveHand() {
     return this.handList[this.activeHand];
   }
+  nextHand() {
+    this.activeHand++;
+  }
+  isPlayerTurnOver() {
+    return this.activeHand > this.handList.length;
+  }
 }

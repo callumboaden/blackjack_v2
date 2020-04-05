@@ -164,6 +164,17 @@ button {
   padding: 15px;
 }
 
+.header #logo {
+  width: 40px;
+  margin-right: 1em;
+}
+
+.header .player__bet__icon,
+.header .player__bank__icon {
+  width: 25px;
+  margin-right: .5em;
+}
+
 .header h1 {
   color: #fff;
   font-size: 1.5em;
@@ -173,10 +184,13 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .header div:first-child {
-  margin-right: 1em;
+  margin-right: 3em;
 }
 
 .player__bet__display__label,

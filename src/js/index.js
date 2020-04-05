@@ -19,7 +19,6 @@ function controlBet(evt) {
 }
 
 function controlPlay(evt) {
-    const playerBet = state.game.player.getBetAmount();
     const action = gameView.getPlayerAction(evt);
 
     action === 'deal' ? controlDeal() :
@@ -33,33 +32,55 @@ function controlPlay(evt) {
     console.log(action);
 }
 
+function controlDeal() {
+  const playerBet = state.game.player.getBetAmount();
+
+  if (playerBet) {
+      // Deal cards to players
+      state.game.deal();
+
+      // Update UI
+      gameView.renderDealer(state.game)
+      gameView.renderPlayerHandList(state.game.player);
+      gameView.hideBetButtons();  
+  } 
+}
+
 function controlHit() {
   // Add new card to Player hand
-  state.game.hitPlayer();
+  const activeHand = state.game.hitPlayer();
+
+  // If hand is bust move to next hand
+  if (activeHand.status === 'bust') state.game.player.nextHand();
+
+  if (state.game.player.isPlayerTurnOver) {
+    console.log('player turn is over')
+  }
+
   // Prepare UI for changes
   gameView.clearPlayerHandDisplay();
   // Render changes on UI
   gameView.renderPlayerHandList(state.game.player);
 }
 
-function controlDeal() {
-    const playerBet = state.game.player.getBetAmount();
+function controlStand() {
+  const activeHand = state.game.standHand();
 
-    if (playerBet) {
-        // Deal cards to players
-        state.game.deal();
+  if (state.game.player.isPlayerTurnOver) {
+    console.log('player turn is over');
 
-        // Update UI
-        gameView.renderDealer(state.game)
-        gameView.renderPlayerHandList(state.game.player);
-        gameView.hideBetButtons();
-        
-    }
+    // Dealer turn
+    state.game.dealerTurn();
 
+    // Prepare UI for changes 
+    gameView.clearDealerHandDisplay();
 
-    console.log(state.game)
-    
+    // Render dealer on UI
+    gameView.renderDealer(state.game);
+
+  }
 }
+
 
 function init() {
   state.game = new Game();

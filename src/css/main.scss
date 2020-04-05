@@ -152,6 +152,17 @@ button {
   justify-content:space-between;
   padding: 15px;
 
+  #logo {
+    width: 40px;
+    margin-right: 1em;
+  }
+
+  .player__bet__icon,
+  .player__bank__icon {
+    width: 25px;
+    margin-right: .5em;
+  }
+
   h1 {
     color: $white;
     font-size: 1.5em;
@@ -159,9 +170,10 @@ button {
 
   div {
     display: flex;
+    align-items: center;
 
     &:first-child {
-      margin-right: 1em;
+      margin-right: 3em;
     }
   }
 }
