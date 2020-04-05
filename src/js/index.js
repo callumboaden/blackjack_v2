@@ -12,8 +12,6 @@ function controlBet(evt) {
     console.log("reset");
     state.game.reset();
 
-    console.log(state.game);
-
     // Update UI
     gameView.updateTotals(state.game.player.bet, state.game.player.bank);
     gameView.clearDealerHandDisplay();
@@ -59,10 +57,16 @@ function controlDeal() {
     gameView.renderPlayerHandList(state.game.player);
     gameView.hideBetButtons();
   }
+
+  if (state.game.player.isSplitHand()) {
+    console.log('can split hand')
+  }
+
+
 }
 
 function controlHit() {
-  if (!state.game.isGameOver) {
+  if (!state.game.isGameOver ) {
     const activeHand = state.game.hitPlayer();
   }
 
@@ -108,6 +112,17 @@ function controlStand() {
     gameView.showBetButtons();
     gameView.renderPlayerHandList(state.game.player);
     gameView.renderDealer(state.game);
+  }
+}
+
+function controlSplit() {
+  if (state.game.player.isSplitHand()) {
+    console.log('splitting hand');
+    state.game.splitHand();
+
+    // Prepare UI for changes
+    gameView.clearPlayerHandDisplay();
+    gameView.renderPlayerHandList(state.game.player);
 
     console.log(state.game);
   }

@@ -31,6 +31,10 @@ class Player {
   nextHand() {
     this.activeHand++;
   }
+  isSplitHand() {
+    const activeHand = this.getActiveHand();
+    return activeHand.cards[0].weight === activeHand.cards[1].weight;
+  }
   isPlayerTurnOver() {
     return this.activeHand === this.handList.length;
   } 

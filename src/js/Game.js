@@ -54,10 +54,18 @@ class Game {
       return activeHand;
     }
   }
+  splitHand() {
+    let activeHand = this.player.getActiveHand();
+    let removedCard = activeHand.cards.pop();
+    let newHandCards = [removedCard, this.deck.getNextCard()];
+
+    this.player.addHand(new Hand(newHandCards, activeHand.bet));
+
+    activeHand.cards.push(this.deck.getNextCard());
+    activeHand.calculateScore();
+  }
   standHand() {
-    if (this.isPlaying) {
-      this.player.nextHand();
-    }
+    this.isPlaying ? this.player.nextHand() : '';
   }
   dealerTurn() {
     while (this.dealer.score < 16) {
@@ -68,8 +76,8 @@ class Game {
     this.isPlaying = false;
   }
   checkWinner() {
-    console.log('checking winner')
-    // Check if player score is > dealer score & < 21
+    console.log('checking winner');
+
     this.player.handList.forEach(hand => {
 
       if (hand.score === this.dealer.score) {
