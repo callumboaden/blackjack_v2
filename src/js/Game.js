@@ -59,6 +59,10 @@ class Game {
     let removedCard = activeHand.cards.pop();
     let newHandCards = [removedCard, this.deck.getNextCard()];
 
+    // Update totals 
+    this.player.bet += activeHand.bet;
+    this.player.bank -= activeHand.bet;
+
     this.player.addHand(new Hand(newHandCards, activeHand.bet));
 
     activeHand.cards.push(this.deck.getNextCard());
@@ -120,20 +124,11 @@ class Game {
         hand.win = 0;
       }
 
-
-      // Testing 
-      /*
-      console.log('Dealer score: ' + this.dealer.score);
-      console.log('Player score: ' + hand.score);
-      console.log('-----------------------------------')
-      console.log('Hand status: ' + hand.status);
-      console.log('Hand win: ' + hand.win);
-      */
-
       this.player.bank += hand.win; 
       
     });
 
+    this.isPlaying = false;
     this.isGameOver = true;
   
   }

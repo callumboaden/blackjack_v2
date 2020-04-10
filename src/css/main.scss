@@ -37,6 +37,10 @@ button {
   border: 0; 
   background: none;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 /* ----------------------------------------------------------------
@@ -221,6 +225,11 @@ button {
 
     .player__hand__list {
       display: flex;
+
+      .player__hand {
+        margin: 0 1em 0 0;
+
+      }
     }
   }
 }

@@ -35,6 +35,10 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline: none;
+}
+
 /* ----------------------------------------------------------------
          Typography
 ---------------------------------------------------------------- */
@@ -258,5 +262,9 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.game .player .player__hand__list .player__hand {
+  margin: 0 1em 0 0;
 }
 /*# sourceMappingURL=main.css.map */

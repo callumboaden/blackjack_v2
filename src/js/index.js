@@ -47,43 +47,54 @@ function controlPlay(evt) {
 function controlDeal() {
   const playerBet = state.game.player.getBetAmount();
 
-  if (playerBet && !state.game.isGameOver) {
-    // Deal cards to players
-    state.game.deal();
+  if (!state.game.isGameOver) {
 
-    // Update UI
-    gameView.renderDealer(state.game);
-    gameView.renderPlayerHandList(state.game.player);
-    gameView.hideBetButtons();
+    if (playerBet && !state.game.isPlaying) {
+      // Deal cards to players
+      state.game.deal();
+
+      // Update UI
+      gameView.renderDealer(state.game);
+      gameView.renderPlayerHandList(state.game.player);
+      gameView.hideBetButtons();
+    }
+
   }
 
 }
 
 function controlHit() {
+  console.log('Hit');
+
   if (!state.game.isGameOver ) {
     state.game.hitPlayer();
-  }
 
-  if (state.game.player.isPlayerTurnOver()) {
+    if (state.game.player.isPlayerTurnOver()) {
 
-    if (state.game.player.handList > 1) {
-      // Dealer turn
-      state.game.dealerTurn();
-      gameView.clearDealerHandDisplay();
-      gameView.renderDealer(state.game);
+      if (state.game.player.handList > 1) {
+        // Dealer turn
+        state.game.dealerTurn();
+        gameView.clearDealerHandDisplay();
+        gameView.renderDealer(state.game);
+      }
+  
+      // Check Winner
+      state.game.checkWinner();
+      gameView.showBetButtons();
     }
 
-    // Check Winner
-    state.game.checkWinner();
-    gameView.showBetButtons();
+    // Prepare UI for changes
+    gameView.clearPlayerHandDisplay();
+
+    // Update Ui with changes
+    gameView.renderPlayerHandList(state.game.player);
   }
 
-  // Prepare UI for changes
-  gameView.clearPlayerHandDisplay();
-  gameView.renderPlayerHandList(state.game.player);
+  console.log(state.game)
 }
 
 function controlStand() {
+  console.log('Stand');
 
   !state.game.isGameOver && state.game.standHand();
 
@@ -103,25 +114,28 @@ function controlStand() {
     gameView.renderPlayerHandList(state.game.player);
     gameView.renderDealer(state.game);
   }
+
+  console.log(state.game);
 }
 
 function controlSplit() {
+  console.log('Split');
+
   if (state.game.player.isSplitHand()) {
     state.game.splitHand();
 
     // Prepare UI for changes
     gameView.clearPlayerHandDisplay();
+
+    // Update UI 
     gameView.renderPlayerHandList(state.game.player);
-
-    // Todo: Update totals on UI
-
+    gameView.updateTotals(state.game.player.bet, state.game.player.bank)
     console.log(state.game);
   }
 }
 
 function controlDouble() {
-
-  console.log('Double Down!');
+  console.log('Double');
 
   !state.game.isGameOver && state.game.doubleHand();
 
@@ -146,7 +160,7 @@ function controlDouble() {
   gameView.clearPlayerHandDisplay();
   gameView.renderPlayerHandList(state.game.player);
 
-  console.log(state.game.player)
+  console.log(state.game);
 }
 
 function init() {

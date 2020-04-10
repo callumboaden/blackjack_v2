@@ -11,9 +11,9 @@ const gameView = {
     elements.playerBetDisplay.textContent = betTotal;
     elements.playerBankDisplay.textContent = bankTotal;
   },
-  renderPlayerHandList: ({ handList }) => {
+  renderPlayerHandList: ({ activeHand, handList }) => {
     const markup = handList
-      .map((hand, i) => renderPlayerHand(hand, i))
+      .map((hand, i) => renderPlayerHand(activeHand, hand, i))
       .join("");
     elements.playerHandListDisplay.insertAdjacentHTML("beforeend", markup);
   },
@@ -35,10 +35,12 @@ const gameView = {
   showBetButtons: () => elements.betButtons.classList.add("active")
 };
 
-function renderPlayerHand(hand, index) {
+function renderPlayerHand(activeHand, hand, index) {
+  let isActive = activeHand === index ? 'active' : '';
+
   return `
     <div class="player__hand player__hand-index-${index}">
-        <div class="player__hand__cards">
+        <div class="player__hand__cards ${isActive}">
             ${hand.cards
               .map((card) => {
                 return `
