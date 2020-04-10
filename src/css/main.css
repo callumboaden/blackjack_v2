@@ -16,6 +16,7 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 h1,
@@ -114,12 +115,15 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  -webkit-transform: translate(200%, -50%);
+          transform: translate(200%, -50%);
+  -webkit-transition: .25s;
+  transition: .25s;
 }
 
-.buttons__bet.hide {
-  display: none;
+.buttons__bet.active {
+  -webkit-transform: translate(0%, -50%);
+          transform: translate(0%, -50%);
 }
 
 .buttons__bet > button {

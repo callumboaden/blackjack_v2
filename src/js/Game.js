@@ -65,7 +65,10 @@ class Game {
     activeHand.calculateScore();
   }
   standHand() {
-    this.isPlaying ? this.player.nextHand() : '';
+    if (this.isPlaying) {
+      this.player.nextHand();
+    }
+    console.log('active hand:' + this.player.activeHand);
   }
   dealerTurn() {
     while (this.dealer.score < 16) {
@@ -100,13 +103,15 @@ class Game {
         hand.win = 0;
       }
 
-      console.log('Dealer score: ' + this.dealer.score);
+
+      // Testing 
+/*       console.log('Dealer score: ' + this.dealer.score);
       console.log('Player score: ' + hand.score);
       console.log('-----------------------------------')
       console.log('Hand status: ' + hand.status);
       console.log('Hand win: ' + hand.win);
 
-      this.player.bank += hand.win;
+      this.player.bank += hand.win; */
       
     });
 

@@ -31,8 +31,8 @@ const gameView = {
       `;
     elements.dealerHandDisplay.insertAdjacentHTML("beforeend", markup);
   },
-  hideBetButtons: () => elements.betButtons.classList.add("hide"),
-  showBetButtons: () => elements.betButtons.classList.remove("hide")
+  hideBetButtons: () => elements.betButtons.classList.remove("active"),
+  showBetButtons: () => elements.betButtons.classList.add("active")
 };
 
 function renderPlayerHand(hand, index) {

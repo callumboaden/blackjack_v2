@@ -94,9 +94,10 @@ function controlHit() {
 
 function controlStand() {
   console.log('stand hand');
+  console.log(state.game.player.activeHand);
   !state.game.isGameOver && state.game.standHand();
 
-  if (state.game.player.isPlayerTurnOver) {
+  if (state.game.player.isPlayerTurnOver()) {
     console.log("player turn is over");
 
     // Dealer turn
