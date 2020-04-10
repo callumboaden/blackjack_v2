@@ -65,10 +65,27 @@ class Game {
     activeHand.calculateScore();
   }
   standHand() {
+    this.isPlaying ? this.player.nextHand() : '';
+  }
+  doubleHand() {
     if (this.isPlaying) {
+      // Get current hand
+      let activeHand = this.player.getActiveHand();
+
+      // Update total bet amount 
+      this.player.bet += activeHand.bet;
+      this.player.bank -= activeHand.bet;
+
+      // Double bet 
+      activeHand.doubleBet();
+
+      // Get new card
+      activeHand.cards.push(this.deck.getNextCard());
+      activeHand.calculateScore();
+
+      // go to next hand
       this.player.nextHand();
     }
-    console.log('active hand:' + this.player.activeHand);
   }
   dealerTurn() {
     while (this.dealer.score < 16) {
@@ -105,13 +122,15 @@ class Game {
 
 
       // Testing 
-/*       console.log('Dealer score: ' + this.dealer.score);
+      /*
+      console.log('Dealer score: ' + this.dealer.score);
       console.log('Player score: ' + hand.score);
       console.log('-----------------------------------')
       console.log('Hand status: ' + hand.status);
       console.log('Hand win: ' + hand.win);
+      */
 
-      this.player.bank += hand.win; */
+      this.player.bank += hand.win; 
       
     });
 

@@ -18,6 +18,10 @@ class Hand {
     getScore() {
         return this.score;
     }
+    doubleBet() {
+        this.bet += this.bet;
+    }
     isTooMany() {
-        return this.score > 21;    }
+        return this.score > 21;    
+    }
 }
