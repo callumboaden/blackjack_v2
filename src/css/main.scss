@@ -72,6 +72,12 @@ button {
   justify-content: center;
   padding-top: 15px;
   padding-bottom: 15px;
+  transition: .25s;
+  transform: translateY(100%);
+
+  &.active {
+    transform: translateY(0);
+  }
 }
 
 .buttons__play > button {
@@ -105,7 +111,6 @@ button {
 }
 
 /* bet buttons */
-
 .buttons__bet {
   top: 40%;
   right: 15px;
@@ -127,21 +132,6 @@ button {
 
   &:hover {
     background: rgba(255, 255, 255, 1);
-  }
-}
-
-/* ----------------------------------------------------------------
-         Images
----------------------------------------------------------------- */
-
-
-.dealer__hand__cards,
-.player__hand__cards {
-  display: flex;
-
-  img {
-    width: 100%;
-    display: inline-block;
   }
 }
 
@@ -228,6 +218,16 @@ button {
     }
   }
 
+  .dealer__hand__cards,
+  .player__hand__cards {
+    display: flex;
+
+    img {
+      width: 100%;
+      display: inline-block;
+    }
+  }
+
   .player {
 
     .player__hand__list {
@@ -235,7 +235,12 @@ button {
 
       .player__hand {
         margin: 0 1em 0 0;
+        transition: .25s;
+        transform: scale(1);
 
+        &.active {
+          transform: scale(1.1);
+        }
       }
     }
   }

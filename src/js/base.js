@@ -1,4 +1,3 @@
-
 const elements = {
     dealButton: document.querySelector('.button__deal'),
     dealerHandDisplay: document.querySelector('.dealer__hand'),

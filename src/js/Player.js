@@ -21,8 +21,10 @@ class Player {
       this.bet += parseInt(bet);
       this.bank -= parseInt(bet);
     }
-
-    return { betTotal: this.bet, bankTotal: this.bank };
+  }
+  clearBet() {
+    this.bank += this.bet;
+    this.bet = 0;
   }
   getBetAmount() {
     return this.bet;

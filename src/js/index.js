@@ -8,6 +8,9 @@ elements.betButtons.addEventListener("click", controlBet);
 elements.playButtons.addEventListener("click", controlPlay);
 
 function controlBet(evt) {
+  const action = evt.target.dataset.action;
+  const bet = evt.target.dataset.bet;
+
   if (state.game.isGameOver) {
     state.game.reset();
 
@@ -20,14 +23,35 @@ function controlBet(evt) {
     gameView.clearDealerHandDisplay();
     gameView.clearPlayerHandDisplay();
   }
-  // Get input from UI
-  const input = gameView.getBetAmount(evt);
 
-  // Update Player bet
-  const { betTotal, bankTotal } = state.game.player.addBet(input);
+  if (action === "clear") {
+    state.game.player.clearBet();
 
-  // Update Ui
-  gameView.updateTotals(betTotal, bankTotal, 0);
+    // Update Ui
+    gameView.hidePlayButtons();
+    gameView.updateTotals(
+      state.game.player.bet,
+      state.game.player.bank,
+      state.game.player.win
+    );
+  }
+
+  if (bet) {
+    console.log('place bet');
+    const input = gameView.getBetAmount(evt);
+    state.game.player.addBet(input);
+  
+    // Update Ui
+    gameView.showPlayButtons();
+    gameView.updateTotals(
+      state.game.player.bet,
+      state.game.player.bank,
+      state.game.player.win
+    );
+  }
+
+  console.log(state.game)
+
 }
 
 function controlPlay(evt) {
@@ -80,6 +104,7 @@ function controlHit() {
 
       // Check Winner
       state.game.checkWinner();
+      gameView.hidePlayButtons();
       gameView.showBetButtons();
     }
 
@@ -109,6 +134,7 @@ function controlStand() {
     gameView.clearDealerHandDisplay();
 
     // Render dealer on UI
+    gameView.hidePlayButtons();
     gameView.showBetButtons();
     gameView.renderPlayerHandList(state.game.player);
     gameView.renderDealer(state.game);
@@ -160,6 +186,7 @@ function controlDouble() {
     gameView.clearDealerHandDisplay();
 
     // Render dealer on UI
+    gameView.hidePlayButtons();
     gameView.showBetButtons();
     gameView.renderPlayerHandList(state.game.player);
     gameView.renderDealer(state.game);
@@ -167,7 +194,12 @@ function controlDouble() {
 
   // Prepare UI for changes
   gameView.clearPlayerHandDisplay();
-  gameView.renderPlayerHandList(state.game.player);
+  gameView.renderPlayerHandList(state.game.player);  
+  gameView.updateTotals(
+    state.game.player.bet,
+    state.game.player.bank,
+    state.game.player.win
+  );
 
   console.log(state.game);
 }

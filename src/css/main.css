@@ -71,6 +71,15 @@ button {
           justify-content: center;
   padding-top: 15px;
   padding-bottom: 15px;
+  -webkit-transition: .25s;
+  transition: .25s;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.buttons__play.active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .buttons__play > button {
@@ -138,22 +147,6 @@ button {
 
 .buttons__bet > button:hover {
   background: white;
-}
-
-/* ----------------------------------------------------------------
-         Images
----------------------------------------------------------------- */
-.dealer__hand__cards,
-.player__hand__cards {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.dealer__hand__cards img,
-.player__hand__cards img {
-  width: 100%;
-  display: inline-block;
 }
 
 /* ----------------------------------------------------------------
@@ -265,6 +258,19 @@ button {
   color: #fff;
 }
 
+.game .dealer__hand__cards,
+.game .player__hand__cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.game .dealer__hand__cards img,
+.game .player__hand__cards img {
+  width: 100%;
+  display: inline-block;
+}
+
 .game .player .player__hand__list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -273,5 +279,14 @@ button {
 
 .game .player .player__hand__list .player__hand {
   margin: 0 1em 0 0;
+  -webkit-transition: .25s;
+  transition: .25s;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.game .player .player__hand__list .player__hand.active {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 /*# sourceMappingURL=main.css.map */

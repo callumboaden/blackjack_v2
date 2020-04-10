@@ -33,15 +33,16 @@ const gameView = {
     elements.dealerHandDisplay.insertAdjacentHTML("beforeend", markup);
   },
   hideBetButtons: () => elements.betButtons.classList.remove("active"),
-  showBetButtons: () => elements.betButtons.classList.add("active")
+  hidePlayButtons: () => elements.playButtons.classList.remove("active"),
+  showBetButtons: () => elements.betButtons.classList.add("active"),
+  showPlayButtons: () => elements.playButtons.classList.add("active")
 };
 
 function renderPlayerHand(activeHand, hand, index) {
-  let isActive = activeHand === index ? 'active' : '';
 
   return `
     <div class="player__hand player__hand-index-${index}">
-        <div class="player__hand__cards ${isActive}">
+        <div class="player__hand__cards">
             ${hand.cards
               .map((card) => {
                 return `
