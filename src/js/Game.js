@@ -124,6 +124,7 @@ class Game {
         hand.win = 0;
       }
 
+      this.player.win += hand.win;
       this.player.bank += hand.win; 
       
     });

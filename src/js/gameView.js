@@ -7,9 +7,10 @@ const gameView = {
   getPlayerAction: (evt) => {
     return evt.target.dataset.action;
   },
-  updateTotals: (betTotal, bankTotal) => {
+  updateTotals: (betTotal, bankTotal, winTotal) => {
     elements.playerBetDisplay.textContent = betTotal;
     elements.playerBankDisplay.textContent = bankTotal;
+    elements.playerWinDisplay.textContent = winTotal;
   },
   renderPlayerHandList: ({ activeHand, handList }) => {
     const markup = handList

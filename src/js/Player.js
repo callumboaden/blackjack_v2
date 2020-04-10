@@ -2,11 +2,13 @@ class Player {
   constructor() {
     this.bet = 0;
     this.bank = 1000;
+    this.win = 0;
     this.handList = [];
     this.activeHand = 0;
   }
   reset() {
     this.bet = 0;
+    this.win = 0;
     this.handList = [];
     this.activeHand = 0;
   }

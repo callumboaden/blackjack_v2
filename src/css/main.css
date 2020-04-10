@@ -178,7 +178,8 @@ button {
 }
 
 .header .player__bet__icon,
-.header .player__bank__icon {
+.header .player__bank__icon,
+.header .player__win__icon {
   width: 25px;
   margin-right: .5em;
 }
@@ -197,17 +198,23 @@ button {
           align-items: center;
 }
 
-.header div:first-child {
+.header div:nth-of-type(1), .header div:nth-of-type(2) {
   margin-right: 3em;
 }
 
+.header div:last-of-type {
+  margin-right: 0;
+}
+
 .player__bet__display__label,
-.player__bank__display__label {
+.player__bank__display__label,
+.player__win__display__label {
   color: #fff;
 }
 
 .player__bet__display__label span,
-.player__bank__display__label span {
+.player__bank__display__label span,
+.player__win__display__label span {
   margin-left: .25em;
 }
 
