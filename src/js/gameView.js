@@ -16,6 +16,8 @@ const gameView = {
     const markup = handList
       .map((hand, i) => renderPlayerHand(activeHand, hand, i))
       .join("");
+
+    elements.playerHandListDisplay.classList.add('active');
     elements.playerHandListDisplay.insertAdjacentHTML("beforeend", markup);
   },
   renderDealer: ({ dealer, isPlaying }) => {
@@ -40,8 +42,10 @@ const gameView = {
 
 function renderPlayerHand(activeHand, hand, index) {
 
+  const isActiveHand = activeHand === index ? 'player__hand--active' : 'player__hand--inactive';
+
   return `
-    <div class="player__hand player__hand-index-${index}">
+    <div class="player__hand player__hand-index-${index} ${isActiveHand}">
         <div class="player__hand__cards">
             ${hand.cards
               .map((card) => {

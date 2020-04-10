@@ -233,15 +233,32 @@ button {
     .player__hand__list {
       display: flex;
 
+
       .player__hand {
         margin: 0 1em 0 0;
-        transition: .25s;
-        transform: scale(1);
+        
+        &.player__hand--inactive {
+          opacity: .5;
+        }
 
-        &.active {
-          transform: scale(1.1);
+        &.player__hand--active {
+          opacity: 1;
         }
       }
     }
+  }
+}
+
+
+/* ----------------------------------------------------------------
+         Animations
+---------------------------------------------------------------- */
+
+@keyframes expand {
+  from {
+    transform: scale(.5);
+  }
+  to {
+    transform: scale(1);
   }
 }

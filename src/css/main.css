@@ -279,14 +279,37 @@ button {
 
 .game .player .player__hand__list .player__hand {
   margin: 0 1em 0 0;
-  -webkit-transition: .25s;
-  transition: .25s;
-  -webkit-transform: scale(1);
-          transform: scale(1);
 }
 
-.game .player .player__hand__list .player__hand.active {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+.game .player .player__hand__list .player__hand.player__hand--inactive {
+  opacity: .5;
+}
+
+.game .player .player__hand__list .player__hand.player__hand--active {
+  opacity: 1;
+}
+
+/* ----------------------------------------------------------------
+         Animations
+---------------------------------------------------------------- */
+@-webkit-keyframes expand {
+  from {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes expand {
+  from {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 /*# sourceMappingURL=main.css.map */
