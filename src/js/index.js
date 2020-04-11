@@ -130,13 +130,11 @@ function controlStand() {
     state.game.checkWinner();
 
     // Prepare UI for changes
-    gameView.clearPlayerHandDisplay();
     gameView.clearDealerHandDisplay();
 
     // Render dealer on UI
     gameView.hidePlayButtons();
     gameView.showBetButtons();
-    gameView.renderPlayerHandList(state.game.player);
     gameView.renderDealer(state.game);
 
     // Update Player Totals
@@ -146,6 +144,9 @@ function controlStand() {
       state.game.player.win
     );
   }
+
+  gameView.clearPlayerHandDisplay();
+  gameView.renderPlayerHandList(state.game.player);
 
   console.log(state.game);
 }

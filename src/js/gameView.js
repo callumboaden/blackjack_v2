@@ -42,7 +42,7 @@ const gameView = {
 
 function renderPlayerHand(activeHand, hand, index) {
 
-  const isActiveHand = activeHand === index ? 'player__hand--active' : 'player__hand--inactive';
+  const isActiveHand = activeHand === index ? 'player__hand--active' : '';
 
   return `
     <div class="player__hand player__hand-index-${index} ${isActiveHand}">

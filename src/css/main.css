@@ -134,19 +134,46 @@ button {
   transition: .25s;
 }
 
+.buttons__bet button {
+  width: 60px;
+  height: 60px;
+  margin: 1em 0;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 50%;
+  border-width: .5em;
+  border-style: dashed;
+  border-color: #fff;
+  -webkit-box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5), 0 0 3px 0 rgba(0, 0, 0, 0.4) inset;
+          box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5), 0 0 3px 0 rgba(0, 0, 0, 0.4) inset;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.buttons__bet button[data-bet="50"] {
+  background: #333333;
+}
+
+.buttons__bet button[data-bet="100"] {
+  background: #0066cc;
+}
+
+.buttons__bet button[data-bet="200"] {
+  background: #00b300;
+}
+
+.buttons__bet button[data-bet="500"] {
+  background: #cc0052;
+}
+
+.buttons__bet button:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
 .buttons__bet.active {
   -webkit-transform: translate(0%, -50%);
           transform: translate(0%, -50%);
-}
-
-.buttons__bet > button {
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.534);
-}
-
-.buttons__bet > button:hover {
-  background: white;
 }
 
 /* ----------------------------------------------------------------
@@ -279,9 +306,6 @@ button {
 
 .game .player .player__hand__list .player__hand {
   margin: 0 1em 0 0;
-}
-
-.game .player .player__hand__list .player__hand.player__hand--inactive {
   opacity: .5;
 }
 
